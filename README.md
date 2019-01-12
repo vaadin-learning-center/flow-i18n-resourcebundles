@@ -15,6 +15,12 @@ For more detailed information, read the tutorial at
 [https://vaadin.com/tutorials/i18n/resourcebundles](https://vaadin.com/tutorials/i18n/resourcebundles) please.
 
 
+This repo contains two implementations of a ResourceBundle.
+The first one is based on the *ListResourceBundle* and the source 
+is in the test source folder.
+*junit.com.vaadin.tutorial.flow.i18n.resourcebundles.v01*
 
+The second implementation is based on the abstract class ResouceBundle itself.
+This demo is in the main source folder. (*com.vaadin.tutorial.flow.i18n.resourcebundles.VaadinResourceBundle*)
 
 
