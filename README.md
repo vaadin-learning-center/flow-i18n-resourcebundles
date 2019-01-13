@@ -1,7 +1,7 @@
-# flow-i18n-i18nprovider
-How to start with the I18nProvider in Flow.
+# flow-i18n-resourcebundles
+How to start with a custom resource bundles in Flow.
 
-In this tutorial we will learn how to implement a ResourceBundle
+In this tutorial we will learn how to implement a custom ResourceBundle
 that is used for the translation functionality inside Flow.
 Focus will be the question, how to deal with different languages (I18N).
 
