@@ -27,7 +27,6 @@ public class VaadinResourceBundle extends ResourceBundle {
   }
 
   @Override
-
   protected Object handleGetObject(String key) {
     return values.get(key);
   }

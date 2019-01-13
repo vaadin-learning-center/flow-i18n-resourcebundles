@@ -13,7 +13,6 @@ public class VaadinAppResourceTest {
   @DisplayName("Locale English")
   void test001() {
     final ResourceBundle a = ResourceBundle.getBundle(VaadinAppResource.class.getName(), Locale.ENGLISH );
-
     Assertions.assertEquals("value 01 - en", a.getString("s1"));
   }
 
@@ -21,17 +20,13 @@ public class VaadinAppResourceTest {
   @DisplayName("Locale German")
   void test002() {
     final ResourceBundle a = ResourceBundle.getBundle(VaadinAppResource.class.getName(), Locale.GERMAN );
-
     Assertions.assertEquals("value 01 - de", a.getString("s1"));
-
   }
 
   @Test
   @DisplayName("Locale Default")
   void test003() {
     final ResourceBundle a = ResourceBundle.getBundle(VaadinAppResource.class.getName() , Locale.ROOT);
-
     Assertions.assertEquals("value 01" , a.getString("s1"));
-
   }
 }
