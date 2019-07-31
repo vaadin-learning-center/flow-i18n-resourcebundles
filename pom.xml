@@ -21,6 +21,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.rapidpm</groupId>
+    <artifactId>rapidpm-vaadin-dependencies-v14</artifactId>
+    <version>04.01.06-RPM</version>
+  </parent>
+
   <groupId>com.vaadin.tutorial</groupId>
   <artifactId>flow-i18n-resourcebundles</artifactId>
   <version>1.0.0-SNAPSHOT</version>
@@ -70,68 +76,8 @@
   </licenses>
 
   <properties>
-    <!--technical-->
-    <!--<maven.compiler.release>10</maven.compiler.release>-->
-    <maven.compiler.target>8</maven.compiler.target>
-    <maven.compiler.source>8</maven.compiler.source>
-
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-    <!--RapidPM-->
-    <rapidpm-functional-reactive.version>01.00.02-RPM</rapidpm-functional-reactive.version>
-    <rapidpm-logger-adapter.version>01.00.01-RPM</rapidpm-logger-adapter.version>
-
-    <!--Vaadin-->
-    <vaadin.version>14.0.0.beta2</vaadin.version>
     <meecrowave.version>1.2.7</meecrowave.version>
-
-    <!--TDD jUnit5-->
-    <junit.jupiter.version>5.4.1</junit.jupiter.version>
-    <junit.platform.version>1.4.1</junit.platform.version>
-
   </properties>
-
-  <repositories>
-    <repository>
-      <id>central</id>
-      <url>https://repo1.maven.org/maven2/</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    <!-- Repository used by many Vaadin add-ons -->
-    <repository>
-      <id>Vaadin Directory</id>
-      <url>http://maven.vaadin.com/vaadin-addons</url>
-    </repository>
-    <!-- Repository needed for prerelease versions of Vaadin -->
-    <repository>
-      <id>Vaadin - Prereleases</id>
-      <url>https://maven.vaadin.com/vaadin-prereleases</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>central</id>
-      <url>https://repo1.maven.org/maven2/</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </pluginRepository>
-    <!-- Repository needed for prerelease versions of Vaadin -->
-    <pluginRepository>
-      <id>Vaadin - Prereleases</id>
-      <url>https://maven.vaadin.com/vaadin-prereleases</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
 
   <!-- Just to disable any accidental deployment to maven.central -->
   <distributionManagement>
@@ -151,7 +97,7 @@
       <dependency>
         <groupId>com.vaadin</groupId>
         <artifactId>vaadin-bom</artifactId>
-        <version>${vaadin.version}</version>
+        <version>${vaadin-v14.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -159,17 +105,6 @@
   </dependencyManagement>
 
   <dependencies>
-    <dependency>
-      <groupId>org.rapidpm</groupId>
-      <artifactId>rapidpm-logger-adapter</artifactId>
-      <version>${rapidpm-logger-adapter.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.rapidpm</groupId>
-      <artifactId>rapidpm-functional-reactive</artifactId>
-      <version>${rapidpm-functional-reactive.version}</version>
-    </dependency>
 
     <!--Infrastructure-->
     <dependency>
@@ -177,18 +112,6 @@
       <artifactId>meecrowave-core</artifactId>
       <version>${meecrowave.version}</version>
       <scope>compile</scope>
-    </dependency>
-
-
-    <!--Vaadin -->
-    <dependency>
-      <groupId>com.vaadin</groupId>
-      <artifactId>vaadin</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.vaadin</groupId>
-      <artifactId>vaadin-lumo-theme</artifactId>
     </dependency>
 
     <dependency>
@@ -200,74 +123,10 @@
       <artifactId>slf4j-simple</artifactId>
     </dependency>
 
-
-    <!--jUnit5-->
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>${junit.jupiter.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <version>${junit.jupiter.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-launcher</artifactId>
-      <scope>test</scope>
-      <version>${junit.platform.version}</version>
-    </dependency>
-    <!-- Only required to run tests in an IDE that bundles an older version -->
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <scope>test</scope>
-      <version>${junit.jupiter.version}</version>
-    </dependency>
-
-
-
-
-
-
   </dependencies>
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-install-plugin</artifactId>
-        <version>3.0.0-M1</version>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.1.1</version>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.0</version>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.1.0</version>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>3.1.0</version>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-clean-plugin</artifactId>
-        <version>3.1.0</version>
-      </plugin>
-
       <plugin>
         <!--
           With this plugin you can start the container..:
@@ -279,36 +138,89 @@
         <artifactId>meecrowave-maven-plugin</artifactId>
         <version>${meecrowave.version}</version>
       </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.2.1</version>
-        <configuration>
-          <!-- das brauchts leider, sonst muessen wir ein web.xml tippen... -->
-          <failOnMissingWebXml>false</failOnMissingWebXml>
-        </configuration>
-      </plugin>
-
-
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M3</version>
-        <configuration>
-          <reuseForks>false</reuseForks>
-          <threadCount>4</threadCount>
-          <argLine>-Xms512m -Xmx512m</argLine>
-          <includes>
-            <include>**/*Test.java</include>
-          </includes>
-          <properties>
-            <!-- <includeTags>fast</includeTags> -->
-            <!--<excludeTags>slow</excludeTags>-->
-          </properties>
-        </configuration>
-      </plugin>
-
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>vaadin-install-nodejs</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-maven-plugin</artifactId>
+            <version>${vaadin-v14.version}</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>prepare-frontend</goal>
+                  <goal>build-frontend</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <!-- optional: you don't really need execution ids, but it looks nice in your build log. -->
+                <id>install node and npm</id>
+                <goals>
+                  <goal>install-node-and-npm</goal>
+                </goals>
+                <!-- optional: default phase is "generate-resources" -->
+                <phase>generate-resources</phase>
+              </execution>
+            </executions>
+            <configuration>
+              <nodeVersion>${frontend-maven-plugin.nodeVersion}</nodeVersion>
+              <!-- optional: with node version greater than 4.0.0 will use npm provided by node distribution -->
+              <npmVersion>${frontend-maven-plugin.npmVersion}</npmVersion>
+              <!-- optional: where to download node and npm from. Defaults to https://nodejs.org/dist/ -->
+              <!--              <downloadRoot>http://myproxy.example.org/nodejs/</downloadRoot>-->
+              <!--              <installDirectory>${frontend-maven-plugin.installDirectory}</installDirectory>-->
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>vaadin-productionMode</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <!--        <property>-->
+        <!--          <name>vaadin-productionMode</name>-->
+        <!--        </property>-->
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>com.vaadin</groupId>
+          <artifactId>flow-server-production-mode</artifactId>
+        </dependency>
+      </dependencies>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-maven-plugin</artifactId>
+            <version>${vaadin-v14.version}</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>copy-production-files</goal>
+                  <goal>package-for-production</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
 </project>
